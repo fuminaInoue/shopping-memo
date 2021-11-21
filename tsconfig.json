@@ -22,7 +22,8 @@
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "baseUrl": "src"
+    "baseUrl": "src",
+"types": ["@emotion/react/types/css-prop"]
   },
   "include": [
     "src"
