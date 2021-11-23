@@ -3,21 +3,23 @@ import React from 'react'
 import { css } from '@emotion/react'
 
 type Props = {
+  // list: string[]
+  newList: string
   setNewList: React.Dispatch<React.SetStateAction<string>>
-  list: string
+  // setList: React.Dispatch<React.SetStateAction<string[]>>
+  onKeyEnter: (
+    e: React.KeyboardEvent<HTMLInputElement>,
+    newList: string,
+  ) => void
 }
 
-export const InputField: React.FC<Props> = ({ setNewList, list }) => {
+export const InputField: React.FC<Props> = ({
+  newList,
+  setNewList,
+  onKeyEnter,
+}) => {
   const onChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewList(e.target.value)
-  }
-
-  const onKeyEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      e.preventDefault()
-      const _list = [list]
-      localStorage.setItem('list', JSON.stringify(_list))
-    }
   }
 
   const onClickCheckBox = () => {}
@@ -28,7 +30,8 @@ export const InputField: React.FC<Props> = ({ setNewList, list }) => {
         css={listInputStyle}
         type="text"
         onChange={(e) => onChangeValue(e)}
-        onKeyPress={(e) => onKeyEnter(e)}
+        onKeyPress={(e) => onKeyEnter(e, newList)}
+        value={newList}
       />
       <input css={listCheckStyle} type="checkbox" onClick={onClickCheckBox} />
     </div>
