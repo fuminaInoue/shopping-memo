@@ -1,21 +1,36 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react'
 import { css } from '@emotion/react'
+import minus from '../../images/minus.png'
 
-type Props = {}
+type Props = {
+  list: string[]
+  setList: React.Dispatch<React.SetStateAction<string[]>>
+}
 
-export const List: React.FC<Props> = ({}) => {
-  const _lists = () => {
-    return JSON.parse(localStorage.getItem('list')!)
+export const List: React.FC<Props> = ({ list, setList }) => {
+  const onClickDelete = (i: number) => {
+    const _list = list
+    _list.splice(i, 1)
+    localStorage.setItem('list', JSON.stringify(_list))
+    setList(_list)
   }
 
-  const onClickCheckBox = () => {}
-
   return (
-    <div css={listStyle}>
-      <div>{_lists()}</div>
-      <input css={listCheckStyle} type="checkbox" onClick={onClickCheckBox} />
-    </div>
+    <>
+      {list.map((v: string, i: number) => {
+        return (
+          <div key={i} css={listStyle}>
+            <div>{v}</div>
+            <img
+              css={listMinusStyle}
+              src={minus}
+              onClick={() => onClickDelete(i)}
+            />
+          </div>
+        )
+      })}
+    </>
   )
 }
 
@@ -27,7 +42,7 @@ const listStyle = css({
   borderRadius: 5,
 })
 
-const listCheckStyle = css({
+const listMinusStyle = css({
   width: 30,
   height: 30,
 })
