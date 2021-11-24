@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react'
 import { css } from '@emotion/react'
+import arrow from '../../images/arrow.svg'
 
 type Props = {
   // list: string[]
@@ -11,18 +12,20 @@ type Props = {
     e: React.KeyboardEvent<HTMLInputElement>,
     newList: string,
   ) => void
+  saveList: (newList: string) => void
 }
 
 export const InputField: React.FC<Props> = ({
   newList,
   setNewList,
   onKeyEnter,
+  saveList,
 }) => {
   const onChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewList(e.target.value)
   }
 
-  const onClickCheckBox = () => {}
+  // const onClickCheckBox = () => {}
 
   return (
     <div css={listStyle}>
@@ -33,7 +36,13 @@ export const InputField: React.FC<Props> = ({
         onKeyPress={(e) => onKeyEnter(e, newList)}
         value={newList}
       />
-      <input css={listCheckStyle} type="checkbox" onClick={onClickCheckBox} />
+      {/* <input css={listCheckStyle} type="checkbox" onClick={onClickCheckBox} /> */}
+      <img
+        css={arrowStyle}
+        src={arrow}
+        alt="上矢印"
+        onClick={() => saveList(newList)}
+      />
     </div>
   )
 }
@@ -55,7 +64,7 @@ const listInputStyle = css({
   paddingLeft: 16,
 })
 
-const listCheckStyle = css({
+const arrowStyle = css({
   width: 30,
   height: 30,
 })

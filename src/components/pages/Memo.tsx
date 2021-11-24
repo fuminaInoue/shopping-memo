@@ -17,11 +17,15 @@ export const Memo: React.FC<Props> = ({}) => {
     newList: string,
   ) => {
     if (e.key === 'Enter') {
-      let _list: string[] = list
-      list.push(newList)
-      localStorage.setItem('list', JSON.stringify(_list))
-      setNewList('')
+      saveList(newList)
     }
+  }
+
+  const saveList = (newList: string) => {
+    let _list: string[] = list
+    list.push(newList)
+    localStorage.setItem('list', JSON.stringify(_list))
+    setNewList('')
   }
 
   const onClickDelete = (i: number) => {
@@ -48,6 +52,7 @@ export const Memo: React.FC<Props> = ({}) => {
         setNewList={setNewList}
         // setList={setList}
         onKeyEnter={onKeyEnter}
+        saveList={saveList}
       />
     </div>
   )
