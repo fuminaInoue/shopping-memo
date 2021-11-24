@@ -24,11 +24,23 @@ export const Memo: React.FC<Props> = ({}) => {
     }
   }
 
+  const onClickDelete = (i: number) => {
+    let _list = [...list]
+    _list.splice(i, 1)
+    localStorage.setItem('list', JSON.stringify(_list))
+    setList(_list)
+  }
+
+  const onClickAllDelete = () => {
+    localStorage.removeItem('list')
+    setList([])
+  }
+
   return (
     <div>
       {/* <Tab /> */}
-      <Header />
-      <List list={list} setList={setList} />
+      <Header onClickAllDelete={onClickAllDelete} />
+      <List list={list} onClickDelete={onClickDelete} />
       <InputField
         // setNewList={setNewList}
         // list={list}
