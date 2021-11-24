@@ -4,12 +4,14 @@ import { css } from '@emotion/react'
 import trash from '../../images/trash.png'
 import plus from '../../images/plus.png'
 
-type Props = {}
+type Props = {
+  onClickAllDelete: () => void
+}
 
-export const Header: React.FC<Props> = ({}) => {
+export const Header: React.FC<Props> = ({ onClickAllDelete }) => {
   return (
     <div css={headerStyle}>
-      <img src={trash} />
+      <img src={trash} onClick={() => onClickAllDelete()} />
       <img src={plus} />
     </div>
   )

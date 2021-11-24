@@ -5,17 +5,10 @@ import minus from '../../images/minus.png'
 
 type Props = {
   list: string[]
-  setList: React.Dispatch<React.SetStateAction<string[]>>
+  onClickDelete: (i: number) => void
 }
 
-export const List: React.FC<Props> = ({ list, setList }) => {
-  const onClickDelete = (i: number) => {
-    const _list = list
-    _list.splice(i, 1)
-    localStorage.setItem('list', JSON.stringify(_list))
-    setList(_list)
-  }
-
+export const List: React.FC<Props> = ({ list, onClickDelete }) => {
   return (
     <>
       {list.map((v: string, i: number) => {
