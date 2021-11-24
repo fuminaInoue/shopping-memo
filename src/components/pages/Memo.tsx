@@ -6,7 +6,10 @@ import { Header } from 'components/molecules'
 type Props = {}
 
 export const Memo: React.FC<Props> = ({}) => {
-  const [list, setList] = useState<string[]>([])
+  const initialList = localStorage.getItem('list')
+    ? JSON.parse(localStorage.getItem('list')!)
+    : []
+  const [list, setList] = useState<string[]>(initialList)
   const [newList, setNewList] = useState('')
 
   const onKeyEnter = (
