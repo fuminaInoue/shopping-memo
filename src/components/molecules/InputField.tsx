@@ -4,10 +4,8 @@ import { css } from '@emotion/react'
 import arrow from '../../images/arrow.svg'
 
 type Props = {
-  // list: string[]
   newList: string
   setNewList: React.Dispatch<React.SetStateAction<string>>
-  // setList: React.Dispatch<React.SetStateAction<string[]>>
   onKeyEnter: (
     e: React.KeyboardEvent<HTMLInputElement>,
     newList: string,
