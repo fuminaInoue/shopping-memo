@@ -3,14 +3,17 @@ import React, { useState } from 'react'
 import { List } from 'components/molecules'
 import { InputField } from 'components/molecules'
 import { Header } from 'components/molecules'
+
+import { ListType } from 'models/MemoType'
+
 type Props = {}
 
 export const Memo: React.FC<Props> = ({}) => {
-  const initialList = localStorage.getItem('list')
+  const storageList = localStorage.getItem('list')
     ? JSON.parse(localStorage.getItem('list')!)
     : []
-  const [list, setList] = useState<string[]>(initialList)
-  const [newList, setNewList] = useState('')
+  const [list, setList] = useState<ListType[]>(storageList)
+  const [newList, setNewList] = useState<string>('')
 
   const onKeyEnter = (
     e: React.KeyboardEvent<HTMLInputElement>,
@@ -22,8 +25,8 @@ export const Memo: React.FC<Props> = ({}) => {
   }
 
   const saveList = (newList: string) => {
-    let _list: string[] = list
-    list.push(newList)
+    let _list: Object[] = list
+    list.push({ memo: newList, isChecked: false })
     localStorage.setItem('list', JSON.stringify(_list))
     setNewList('')
   }

@@ -3,21 +3,27 @@ import React from 'react'
 import { css } from '@emotion/react'
 import minus from '../../images/minus.png'
 
+import { ListType } from 'models/MemoType'
+
 type Props = {
-  list: string[]
+  list: ListType[]
   onClickDelete: (i: number) => void
 }
 
 export const List: React.FC<Props> = ({ list, onClickDelete }) => {
+  const onClickCheckBox = () => {}
+
   return (
     <>
-      {list.map((v: string, i: number) => {
+      {list.map((v: ListType, i: number) => {
         return (
           <div key={i} css={listStyle}>
-            <div>{v}</div>
+            <input css={imageStyle} type="checkbox" onClick={onClickCheckBox} />
+            <div>{v.memo}</div>
             <img
-              css={listMinusStyle}
+              css={imageStyle}
               src={minus}
+              alt="削除"
               onClick={() => onClickDelete(i)}
             />
           </div>
@@ -35,7 +41,7 @@ const listStyle = css({
   borderRadius: 5,
 })
 
-const listMinusStyle = css({
+const imageStyle = css({
   width: 30,
   height: 30,
 })
