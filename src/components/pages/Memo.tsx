@@ -3,14 +3,17 @@ import React, { useState } from 'react'
 import { List } from 'components/molecules'
 import { InputField } from 'components/molecules'
 import { Header } from 'components/molecules'
+
+import { ListType } from 'models/MemoType'
+
 type Props = {}
 
 export const Memo: React.FC<Props> = ({}) => {
-  const initialList = localStorage.getItem('list')
+  const storageList = localStorage.getItem('list')
     ? JSON.parse(localStorage.getItem('list')!)
     : []
-  const [list, setList] = useState<string[]>(initialList)
-  const [newList, setNewList] = useState('')
+  const [list, setList] = useState<ListType[]>(storageList)
+  const [newList, setNewList] = useState<string>('')
 
   const onKeyEnter = (
     e: React.KeyboardEvent<HTMLInputElement>,
@@ -22,10 +25,17 @@ export const Memo: React.FC<Props> = ({}) => {
   }
 
   const saveList = (newList: string) => {
-    let _list: string[] = list
-    list.push(newList)
+    let _list: Object[] = list
+    list.push({ memo: newList, isChecked: false })
     localStorage.setItem('list', JSON.stringify(_list))
     setNewList('')
+  }
+
+  const onClickCheckBox = (i: number) => {
+    let _list: ListType[] = [...list]
+    _list[i]['isChecked'] = !_list[i]['isChecked']
+    localStorage.setItem('list', JSON.stringify(_list))
+    setList(_list)
   }
 
   const onClickDelete = (i: number) => {
@@ -44,7 +54,11 @@ export const Memo: React.FC<Props> = ({}) => {
     <div>
       {/* <Tab /> */}
       <Header onClickAllDelete={onClickAllDelete} />
-      <List list={list} onClickDelete={onClickDelete} />
+      <List
+        list={list}
+        onClickDelete={onClickDelete}
+        onClickCheckBox={onClickCheckBox}
+      />
       <InputField
         // setNewList={setNewList}
         // list={list}

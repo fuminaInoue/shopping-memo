@@ -1,24 +1,43 @@
 /** @jsxImportSource @emotion/react */
-import React from 'react'
+import React, { useEffect } from 'react'
 import { css } from '@emotion/react'
 import minus from '../../images/minus.png'
 
+import { ListType } from 'models/MemoType'
+
 type Props = {
-  list: string[]
+  list: ListType[]
   onClickDelete: (i: number) => void
+  onClickCheckBox: (i: number) => void
 }
 
-export const List: React.FC<Props> = ({ list, onClickDelete }) => {
+export const List: React.FC<Props> = ({
+  list,
+  onClickDelete,
+  onClickCheckBox,
+}) => {
+  useEffect(() => {
+    console.log(list)
+  }, [list])
   return (
     <>
-      {list.map((v: string, i: number) => {
+      {list.map((v: ListType, i: number) => {
         return (
           <div key={i} css={listStyle}>
-            <div>{v}</div>
             <img
-              css={listMinusStyle}
+              css={deleteStyle}
               src={minus}
+              alt="削除"
               onClick={() => onClickDelete(i)}
+            />
+            <div css={v.isChecked ? checkedStyle : notCheckedStyle}>
+              {v.memo}
+            </div>
+            <input
+              css={checkStyle}
+              type="checkbox"
+              checked={v.isChecked}
+              onClick={() => onClickCheckBox(i)}
             />
           </div>
         )
@@ -29,13 +48,29 @@ export const List: React.FC<Props> = ({ list, onClickDelete }) => {
 
 const listStyle = css({
   display: 'flex',
-  justifyContent: 'space-between',
+  justifyContent: 'flex-start',
   alignItems: 'center',
   padding: 10,
   borderRadius: 5,
+  fontSize: 18,
 })
 
-const listMinusStyle = css({
+const deleteStyle = css({
   width: 30,
   height: 30,
+  marginRight: 16,
+})
+
+const checkStyle = css({
+  width: 30,
+  height: 30,
+  margin: '0 0 0 auto',
+})
+
+const checkedStyle = css({
+  textDecoration: 'line-through',
+})
+
+const notCheckedStyle = css({
+  textDecoration: 'none',
 })

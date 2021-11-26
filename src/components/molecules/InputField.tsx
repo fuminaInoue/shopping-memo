@@ -25,8 +25,6 @@ export const InputField: React.FC<Props> = ({
     setNewList(e.target.value)
   }
 
-  // const onClickCheckBox = () => {}
-
   return (
     <div css={listStyle}>
       <input
@@ -36,7 +34,6 @@ export const InputField: React.FC<Props> = ({
         onKeyPress={(e) => onKeyEnter(e, newList)}
         value={newList}
       />
-      {/* <input css={listCheckStyle} type="checkbox" onClick={onClickCheckBox} /> */}
       <img
         css={arrowStyle}
         src={arrow}
