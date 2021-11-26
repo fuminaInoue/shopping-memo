@@ -35,10 +35,10 @@ export const InputField: React.FC<Props> = ({
         value={newList}
       />
       <img
-        css={arrowStyle}
+        css={newList ? arrowStyle : disabledArrowStyle}
         src={arrow}
         alt="上矢印"
-        onClick={() => saveList(newList)}
+        onClick={newList ? () => saveList(newList) : undefined}
       />
     </div>
   )
@@ -64,4 +64,8 @@ const listInputStyle = css({
 const arrowStyle = css({
   width: 30,
   height: 30,
+})
+
+const disabledArrowStyle = css(arrowStyle, {
+  opacity: 0.3,
 })
