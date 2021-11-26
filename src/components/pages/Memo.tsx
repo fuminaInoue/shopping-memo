@@ -31,6 +31,13 @@ export const Memo: React.FC<Props> = ({}) => {
     setNewList('')
   }
 
+  const onClickCheckBox = (i: number) => {
+    let _list: ListType[] = [...list]
+    _list[i]['isChecked'] = !_list[i]['isChecked']
+    localStorage.setItem('list', JSON.stringify(_list))
+    setList(_list)
+  }
+
   const onClickDelete = (i: number) => {
     let _list = [...list]
     _list.splice(i, 1)
@@ -47,7 +54,11 @@ export const Memo: React.FC<Props> = ({}) => {
     <div>
       {/* <Tab /> */}
       <Header onClickAllDelete={onClickAllDelete} />
-      <List list={list} onClickDelete={onClickDelete} />
+      <List
+        list={list}
+        onClickDelete={onClickDelete}
+        onClickCheckBox={onClickCheckBox}
+      />
       <InputField
         // setNewList={setNewList}
         // list={list}
