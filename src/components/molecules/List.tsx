@@ -37,7 +37,7 @@ export const List: React.FC<Props> = ({
               css={checkStyle}
               type="checkbox"
               checked={v.isChecked}
-              onClick={() => onClickCheckBox(i)}
+              onChange={() => onClickCheckBox(i)}
             />
           </div>
         )

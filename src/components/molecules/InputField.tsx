@@ -4,10 +4,8 @@ import { css } from '@emotion/react'
 import arrow from '../../images/arrow.svg'
 
 type Props = {
-  // list: string[]
   newList: string
   setNewList: React.Dispatch<React.SetStateAction<string>>
-  // setList: React.Dispatch<React.SetStateAction<string[]>>
   onKeyEnter: (
     e: React.KeyboardEvent<HTMLInputElement>,
     newList: string,
@@ -35,10 +33,10 @@ export const InputField: React.FC<Props> = ({
         value={newList}
       />
       <img
-        css={arrowStyle}
+        css={newList ? arrowStyle : disabledArrowStyle}
         src={arrow}
         alt="上矢印"
-        onClick={() => saveList(newList)}
+        onClick={newList ? () => saveList(newList) : undefined}
       />
     </div>
   )
@@ -64,4 +62,8 @@ const listInputStyle = css({
 const arrowStyle = css({
   width: 30,
   height: 30,
+})
+
+const disabledArrowStyle = css(arrowStyle, {
+  opacity: 0.3,
 })

@@ -46,8 +46,11 @@ export const Memo: React.FC<Props> = ({}) => {
   }
 
   const onClickAllDelete = () => {
-    localStorage.removeItem('list')
-    setList([])
+    const result = window.confirm('すべて削除しますか？')
+    if (result) {
+      localStorage.removeItem('list')
+      setList([])
+    }
   }
 
   return (
@@ -60,11 +63,8 @@ export const Memo: React.FC<Props> = ({}) => {
         onClickCheckBox={onClickCheckBox}
       />
       <InputField
-        // setNewList={setNewList}
-        // list={list}
         newList={newList}
         setNewList={setNewList}
-        // setList={setList}
         onKeyEnter={onKeyEnter}
         saveList={saveList}
       />
