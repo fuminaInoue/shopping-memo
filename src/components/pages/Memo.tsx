@@ -1,4 +1,6 @@
+/** @jsxImportSource @emotion/react */
 import React, { useState } from 'react'
+import { css } from '@emotion/react'
 
 import { List } from 'components/molecules'
 import { InputField } from 'components/molecules'
@@ -8,7 +10,7 @@ import { ListType } from 'models/MemoType'
 
 type Props = {}
 
-export const Memo: React.FC<Props> = ({}) => {
+export const Memo: React.FC<Props> = () => {
   const storageList = localStorage.getItem('list')
     ? JSON.parse(localStorage.getItem('list')!)
     : []
@@ -54,7 +56,7 @@ export const Memo: React.FC<Props> = ({}) => {
   }
 
   return (
-    <div>
+    <div css={memoContainerStyle}>
       {/* <Tab /> */}
       <Header onClickAllDelete={onClickAllDelete} />
       <List
@@ -71,3 +73,7 @@ export const Memo: React.FC<Props> = ({}) => {
     </div>
   )
 }
+
+const memoContainerStyle = css({
+  height: '100vh',
+})

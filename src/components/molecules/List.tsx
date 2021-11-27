@@ -50,15 +50,20 @@ const listStyle = css({
   display: 'flex',
   justifyContent: 'flex-start',
   alignItems: 'center',
-  padding: 10,
+  padding: '8px 0',
+  margin: '0 auto 8px',
+  width: '90%',
   borderRadius: 5,
   fontSize: 18,
+  borderBottom: '1px solid #ccc',
+  fontWeight: 'bold',
+  letterSpacing: 2,
 })
 
 const deleteStyle = css({
   width: 30,
   height: 30,
-  marginRight: 16,
+  marginRight: 32,
 })
 
 const checkStyle = css({
@@ -69,8 +74,9 @@ const checkStyle = css({
 
 const checkedStyle = css({
   textDecoration: 'line-through',
+  color: '#333',
 })
 
-const notCheckedStyle = css({
+const notCheckedStyle = css(checkedStyle, {
   textDecoration: 'none',
 })
