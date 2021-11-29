@@ -2,10 +2,7 @@
 import React, { useState } from 'react'
 import { css } from '@emotion/react'
 
-import { List } from 'components/molecules'
-import { InputField } from 'components/molecules'
-import { Header } from 'components/molecules'
-
+import { List, InputField, Header, Tab } from 'components/molecules'
 import { ListType } from 'models/MemoType'
 
 type Props = {}
@@ -56,24 +53,26 @@ export const Memo: React.FC<Props> = () => {
   }
 
   return (
-    <div css={memoContainerStyle}>
-      {/* <Tab /> */}
-      <Header onClickAllDelete={onClickAllDelete} />
-      <List
-        list={list}
-        onClickDelete={onClickDelete}
-        onClickCheckBox={onClickCheckBox}
-      />
-      <InputField
-        newList={newList}
-        setNewList={setNewList}
-        onKeyEnter={onKeyEnter}
-        saveList={saveList}
-      />
-    </div>
+    <>
+      <div css={memoContainerStyle}>
+        <Header onClickAllDelete={onClickAllDelete} />
+        <List
+          list={list}
+          onClickDelete={onClickDelete}
+          onClickCheckBox={onClickCheckBox}
+        />
+        <InputField
+          newList={newList}
+          setNewList={setNewList}
+          onKeyEnter={onKeyEnter}
+          saveList={saveList}
+        />
+      </div>
+      <Tab />
+    </>
   )
 }
 
 const memoContainerStyle = css({
-  height: '100vh',
+  height: 'calc(100vh - 33px)',
 })
