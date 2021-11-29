@@ -53,7 +53,6 @@ const listStyle = css({
   padding: '8px 0',
   margin: '0 auto 8px',
   width: '90%',
-  borderRadius: 5,
   fontSize: 18,
   borderBottom: '1px solid #ccc',
   fontWeight: 'bold',
@@ -67,7 +66,7 @@ const deleteStyle = css({
 })
 
 const checkStyle = css({
-  width: 30,
+  minWidth: 30,
   height: 30,
   margin: '0 0 0 auto',
 })
