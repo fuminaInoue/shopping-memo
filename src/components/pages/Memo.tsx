@@ -53,24 +53,26 @@ export const Memo: React.FC<Props> = () => {
   }
 
   return (
-    <div css={memoContainerStyle}>
+    <>
+      <div css={memoContainerStyle}>
+        <Header onClickAllDelete={onClickAllDelete} />
+        <List
+          list={list}
+          onClickDelete={onClickDelete}
+          onClickCheckBox={onClickCheckBox}
+        />
+        <InputField
+          newList={newList}
+          setNewList={setNewList}
+          onKeyEnter={onKeyEnter}
+          saveList={saveList}
+        />
+      </div>
       <Tab />
-      <Header onClickAllDelete={onClickAllDelete} />
-      <List
-        list={list}
-        onClickDelete={onClickDelete}
-        onClickCheckBox={onClickCheckBox}
-      />
-      <InputField
-        newList={newList}
-        setNewList={setNewList}
-        onKeyEnter={onKeyEnter}
-        saveList={saveList}
-      />
-    </div>
+    </>
   )
 }
 
 const memoContainerStyle = css({
-  height: '100vh',
+  height: 'calc(100vh - 33px)',
 })
