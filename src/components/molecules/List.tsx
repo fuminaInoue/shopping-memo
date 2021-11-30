@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import React, { useEffect } from 'react'
+import React from 'react'
 import { css } from '@emotion/react'
 import minus from '../../images/minus.png'
 
@@ -16,32 +16,30 @@ export const List: React.FC<Props> = ({
   onClickDelete,
   onClickCheckBox,
 }) => {
-  useEffect(() => {
-    console.log(list)
-  }, [list])
   return (
     <>
-      {list.map((v: ListType, i: number) => {
-        return (
-          <div key={i} css={listStyle}>
-            <img
-              css={deleteStyle}
-              src={minus}
-              alt="削除"
-              onClick={() => onClickDelete(i)}
-            />
-            <div css={v.isChecked ? checkedStyle : notCheckedStyle}>
-              {v.memo}
+      {list &&
+        list.map((v: ListType, i: number) => {
+          return (
+            <div key={i} css={listStyle}>
+              <img
+                css={deleteStyle}
+                src={minus}
+                alt="削除"
+                onClick={() => onClickDelete(i)}
+              />
+              <div css={v.isChecked ? checkedStyle : notCheckedStyle}>
+                {v.memo}
+              </div>
+              <input
+                css={checkStyle}
+                type="checkbox"
+                checked={v.isChecked}
+                onChange={() => onClickCheckBox(i)}
+              />
             </div>
-            <input
-              css={checkStyle}
-              type="checkbox"
-              checked={v.isChecked}
-              onChange={() => onClickCheckBox(i)}
-            />
-          </div>
-        )
-      })}
+          )
+        })}
     </>
   )
 }

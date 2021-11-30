@@ -13,6 +13,7 @@ export const Memo: React.FC<Props> = () => {
     : []
   const [list, setList] = useState<ListType[]>(storageList)
   const [newList, setNewList] = useState<string>('')
+  const [tabNumber, setTabNumber] = useState<number>(0)
 
   const onKeyEnter = (
     e: React.KeyboardEvent<HTMLInputElement>,
@@ -58,6 +59,7 @@ export const Memo: React.FC<Props> = () => {
         <Header onClickAllDelete={onClickAllDelete} />
         <List
           list={list}
+          // tabNumber={tabNumber}
           onClickDelete={onClickDelete}
           onClickCheckBox={onClickCheckBox}
         />
@@ -68,11 +70,11 @@ export const Memo: React.FC<Props> = () => {
           saveList={saveList}
         />
       </div>
-      <Tab />
+      <Tab setTabNumber={setTabNumber} />
     </>
   )
 }
 
 const memoContainerStyle = css({
-  height: 'calc(100vh - 33px)',
+  height: 'calc(100vh - 41px)',
 })
