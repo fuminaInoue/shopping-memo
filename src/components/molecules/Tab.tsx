@@ -2,7 +2,9 @@
 import React from 'react'
 import { css } from '@emotion/react'
 
-type Props = {}
+type Props = {
+  setTabNumber: React.Dispatch<React.SetStateAction<number>>
+}
 
 export const Tab: React.FC<Props> = ({}) => {
   return (
