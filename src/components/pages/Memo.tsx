@@ -70,11 +70,11 @@ export const Memo: React.FC<Props> = () => {
           saveList={saveList}
         />
       </div>
-      <Tab setTabNumber={setTabNumber} />
+      <Tab tabNumber={tabNumber} setTabNumber={setTabNumber} />
     </>
   )
 }
 
 const memoContainerStyle = css({
-  height: 'calc(100vh - 41px)',
+  height: 'calc(100vh - 46px)',
 })
