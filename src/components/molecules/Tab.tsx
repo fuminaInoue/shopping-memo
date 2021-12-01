@@ -4,16 +4,24 @@ import { css } from '@emotion/react'
 
 type Props = {
   tabNumber: number
-  setTabNumber: React.Dispatch<React.SetStateAction<number>>
+  onCLickTab: (index: number) => void
 }
 
-export const Tab: React.FC<Props> = ({ tabNumber }) => {
+export const Tab: React.FC<Props> = ({ tabNumber, onCLickTab }) => {
+  const tabs = ['tab1', 'tab2', 'tab3', 'tab4']
+
   return (
     <div css={tabWrapperStyle}>
-      <div css={tabNumber === 0 ? activeTabStyle : tabStyle}>tab1</div>
-      <div css={tabNumber === 1 ? activeTabStyle : tabStyle}>tab2</div>
-      <div css={tabNumber === 2 ? activeTabStyle : tabStyle}>tab3</div>
-      <div css={tabNumber === 3 ? activeTabStyle : tabStyle}>tab4</div>
+      {tabs.map((v, index) => {
+        return (
+          <div
+            css={tabNumber === index ? activeTabStyle : tabStyle}
+            onClick={() => onCLickTab(index)}
+          >
+            {v}
+          </div>
+        )
+      })}
     </div>
   )
 }
@@ -41,4 +49,5 @@ const activeTabStyle = css(tabStyle, {
   fontSize: 18,
   padding: '8px 8px 8px 8px',
   letterSpacing: 2,
+  borderRadius: '8px 8px 0 0',
 })

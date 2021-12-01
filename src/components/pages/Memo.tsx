@@ -53,6 +53,10 @@ export const Memo: React.FC<Props> = () => {
     }
   }
 
+  const onCLickTab = (index: number) => {
+    setTabNumber(index)
+  }
+
   return (
     <>
       <div css={memoContainerStyle}>
@@ -70,7 +74,7 @@ export const Memo: React.FC<Props> = () => {
           saveList={saveList}
         />
       </div>
-      <Tab tabNumber={tabNumber} setTabNumber={setTabNumber} />
+      <Tab tabNumber={tabNumber} onCLickTab={onCLickTab} />
     </>
   )
 }
