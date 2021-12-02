@@ -11,7 +11,7 @@ export const Memo: React.FC<Props> = () => {
   const storageList = localStorage.getItem('list')
     ? JSON.parse(localStorage.getItem('list')!)
     : []
-  const [list, setList] = useState<ListType[]>(storageList)
+  const [list, setList] = useState<ListType[][]>(storageList)
   const [newList, setNewList] = useState<string>('')
   const [tabNumber, setTabNumber] = useState<number>(0)
 
@@ -25,26 +25,30 @@ export const Memo: React.FC<Props> = () => {
   }
 
   const saveList = (newList: string) => {
-    let _list: Object[] = list
-    list.push({ memo: newList, isChecked: false })
+    let _list: Object[][] = list
+    _list[tabNumber] = list[tabNumber] ? list[tabNumber] : []
+    _list[tabNumber].push({ memo: newList, isChecked: false })
     localStorage.setItem('list', JSON.stringify(_list))
     setNewList('')
   }
 
   const onClickCheckBox = (i: number) => {
-    let _list: ListType[] = [...list]
-    _list[i]['isChecked'] = !_list[i]['isChecked']
+    let _list: ListType[][] = [...list]
+    _list[tabNumber] = list[tabNumber]
+    _list[tabNumber][i]['isChecked'] = !_list[tabNumber][i]['isChecked']
     localStorage.setItem('list', JSON.stringify(_list))
     setList(_list)
+    console.log(i)
   }
 
   const onClickDelete = (i: number) => {
     let _list = [...list]
-    _list.splice(i, 1)
+    _list[tabNumber].splice(i, 1)
     localStorage.setItem('list', JSON.stringify(_list))
     setList(_list)
   }
 
+  // TODO: 全消しをタブごとにする
   const onClickAllDelete = () => {
     const result = window.confirm('すべて削除しますか？')
     if (result) {
@@ -63,7 +67,7 @@ export const Memo: React.FC<Props> = () => {
         <Header onClickAllDelete={onClickAllDelete} />
         <List
           list={list}
-          // tabNumber={tabNumber}
+          tabNumber={tabNumber}
           onClickDelete={onClickDelete}
           onClickCheckBox={onClickCheckBox}
         />
