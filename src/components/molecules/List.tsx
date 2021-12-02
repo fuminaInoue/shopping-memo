@@ -6,20 +6,22 @@ import minus from '../../images/minus.png'
 import { ListType } from 'models/MemoType'
 
 type Props = {
-  list: ListType[]
+  list: ListType[][]
+  tabNumber: number
   onClickDelete: (i: number) => void
   onClickCheckBox: (i: number) => void
 }
 
 export const List: React.FC<Props> = ({
   list,
+  tabNumber,
   onClickDelete,
   onClickCheckBox,
 }) => {
   return (
     <>
-      {list &&
-        list.map((v: ListType, i: number) => {
+      {list[tabNumber] &&
+        list[tabNumber].map((v: ListType, i: number) => {
           return (
             <div key={i} css={listStyle}>
               <img
