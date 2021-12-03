@@ -48,12 +48,13 @@ export const Memo: React.FC<Props> = () => {
     setList(_list)
   }
 
-  // TODO: 全消しをタブごとにする
   const onClickAllDelete = () => {
-    const result = window.confirm('すべて削除しますか？')
+    const result = window.confirm(`tab${tabNumber + 1}をすべて削除しますか？`)
     if (result) {
-      localStorage.removeItem('list')
-      setList([])
+      let _list = [...list]
+      _list[tabNumber] = []
+      localStorage.setItem('list', JSON.stringify(_list))
+      setList(_list)
     }
   }
 
