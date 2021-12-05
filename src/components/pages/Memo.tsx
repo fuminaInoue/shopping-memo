@@ -38,7 +38,6 @@ export const Memo: React.FC<Props> = () => {
     _list[tabNumber][i]['isChecked'] = !_list[tabNumber][i]['isChecked']
     localStorage.setItem('list', JSON.stringify(_list))
     setList(_list)
-    console.log(i)
   }
 
   const onClickDelete = (i: number) => {

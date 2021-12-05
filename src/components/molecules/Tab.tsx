@@ -15,6 +15,7 @@ export const Tab: React.FC<Props> = ({ tabNumber, onCLickTab }) => {
       {tabs.map((v, index) => {
         return (
           <div
+            key={v}
             css={tabNumber === index ? activeTabStyle : tabStyle}
             onClick={() => onCLickTab(index)}
           >

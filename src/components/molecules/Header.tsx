@@ -11,9 +11,12 @@ type Props = {
 
 export const Header: React.FC<Props> = ({ onClickAllDelete }) => {
   const navigate = useNavigate()
+  const themeColor = localStorage.getItem('themeColor')
+    ? localStorage.getItem('themeColor')!
+    : '#afeeee'
 
   return (
-    <div css={headerStyle}>
+    <div style={{ background: themeColor }} css={headerStyle}>
       <img src={trash} alt="全件削除" onClick={() => onClickAllDelete()} />
       <img src={setting} alt="全件削除" onClick={() => navigate('/setting')} />
     </div>
@@ -25,7 +28,6 @@ const headerStyle = css({
   justifyContent: 'space-between',
   alignItems: 'center',
   padding: 10,
-  background: '#afeeee',
   marginBottom: 16,
   img: {
     width: 30,
