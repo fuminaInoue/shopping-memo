@@ -36,11 +36,11 @@ export const Setting: React.FC<Props> = () => {
           id=""
           onChange={(e) => onChangeThemeColor(e.target.value)}
         >
-          <option value="#afeeee">turquoise</option>
-          <option value="#ffe4e1">mistyrose</option>
-          <option value="#fffff0">ivory</option>
-          <option value="#9370db">purple</option>
-          <option value="#808080">gray</option>
+          <option value="#afeeee">ターコイズ</option>
+          <option value="#ffe4e1">ローズ</option>
+          <option value="#fffff0">アイボリー</option>
+          <option value="#9370db">むらさき</option>
+          <option value="#808080">グレー</option>
         </select>
       </div>{' '}
     </>
