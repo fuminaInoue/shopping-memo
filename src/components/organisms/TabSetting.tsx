@@ -16,6 +16,7 @@ export const TabSetting: React.FC<Props> = ({}) => {
     newTabTitles.push(newTabTitle)
     localStorage.setItem('tabTitles', JSON.stringify(newTabTitles))
     setTabTitles(newTabTitles)
+    setNewTabTitle('')
   }
 
   const onClickDelete = (i: number) => {
@@ -37,8 +38,8 @@ export const TabSetting: React.FC<Props> = ({}) => {
         tabTitles.map((v: string, i: number) => {
           return (
             <div css={contentsStyle}>
-              <div css={themeStyle}>タブ{i + 1}</div>
-              <div css={themeStyle}>{v}</div>
+              <div css={labelStyle}>タブ{i + 1}</div>
+              <div css={titleStyle}>{v}</div>
               <img
                 css={deleteStyle}
                 src={minus}
@@ -49,10 +50,11 @@ export const TabSetting: React.FC<Props> = ({}) => {
           )
         })}
       <div css={contentsStyle}>
-        <div css={themeStyle}>新規タブ名</div>
+        <div css={labelStyle}>新規タブ名</div>
         <input
-          css={themeInputStyle}
+          css={tabTitleInputStyle}
           onChange={(e) => setNewTabTitle(e.target.value)}
+          value={newTabTitle}
         />
         <img
           // css={newList ? arrowStyle : disabledArrowStyle}
@@ -75,17 +77,24 @@ const contentsStyle = css({
   width: '90%',
   display: 'flex',
   justifyContent: 'space-between',
+  alignItems: 'center',
 })
 
-const themeStyle = css({
+const labelStyle = css({
   fontWeight: 'bold',
   fontSize: 18,
 })
 
-const themeInputStyle = css({
+const titleStyle = css({
   fontSize: 18,
-  padding: '0 8px',
+  letterSpacing: 1,
+})
+
+const tabTitleInputStyle = css({
+  fontSize: 18,
+  padding: '2px 8px',
   borderRadius: 5,
+  width: '30%',
 })
 
 const deleteStyle = css({

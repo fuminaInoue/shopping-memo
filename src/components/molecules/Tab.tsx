@@ -8,7 +8,9 @@ type Props = {
 }
 
 export const Tab: React.FC<Props> = ({ tabNumber, onCLickTab }) => {
-  const tabs = ['tab1', 'tab2', 'tab3', 'tab4']
+  const tabs = localStorage.getItem('tabTitles')
+    ? JSON.parse(localStorage.getItem('tabTitles')!)
+    : 'tab1'
   const [themeColor, setThemeColor] = useState('')
 
   useEffect(() => {
@@ -22,18 +24,19 @@ export const Tab: React.FC<Props> = ({ tabNumber, onCLickTab }) => {
 
   return (
     <div css={tabWrapperStyle}>
-      {tabs.map((v, index) => {
-        return (
-          <div
-            key={v}
-            style={{ background: tabNumber === index ? themeColor : '#ccc' }}
-            css={tabNumber === index ? activeTabStyle : tabStyle}
-            onClick={() => onCLickTab(index)}
-          >
-            {v}
-          </div>
-        )
-      })}
+      {tabs &&
+        tabs.map((v: string, index: number) => {
+          return (
+            <div
+              key={v}
+              style={{ background: tabNumber === index ? themeColor : '#ccc' }}
+              css={tabNumber === index ? activeTabStyle : tabStyle}
+              onClick={() => onCLickTab(index)}
+            >
+              {v}
+            </div>
+          )
+        })}
     </div>
   )
 }
@@ -46,7 +49,7 @@ const tabWrapperStyle = css({
 
 const tabStyle = css({
   padding: '4px 4px 2px 4px',
-  border: '1px solid #333',
+  boxShadow: '1px 1px 1px 1px #333',
   borderBottom: 'none',
   width: '25%',
   textAlign: 'center',
