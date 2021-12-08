@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { css } from '@emotion/react'
 import { useNavigate } from 'react-router-dom'
-import { ThemeColor } from 'components/organisms/ThemeColor'
+import { ThemeColor, TabSetting } from 'components/organisms'
 import close from '../../images/close.svg'
 
 type Props = {}
@@ -26,6 +26,7 @@ export const Setting: React.FC<Props> = () => {
         <img src={close} alt="全件削除" onClick={() => navigate('/')} />
       </div>
       <ThemeColor setThemeColor={setThemeColor} />
+      <TabSetting />
     </>
   )
 }
