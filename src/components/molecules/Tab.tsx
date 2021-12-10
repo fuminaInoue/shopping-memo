@@ -49,7 +49,7 @@ const tabWrapperStyle = css({
 
 const tabStyle = css({
   padding: '4px 4px 2px 4px',
-  boxShadow: '1px 1px 1px 1px #333',
+  boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px',
   borderBottom: 'none',
   width: '25%',
   textAlign: 'center',
