@@ -19,6 +19,12 @@ export const TabSetting: React.FC<Props> = ({}) => {
     setNewTabTitle('')
   }
 
+  const onKeyEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      saveTabTitle()
+    }
+  }
+
   const onClickDelete = (i: number) => {
     let _tabTitles = [...tabTitles]
     _tabTitles.splice(i, 1)
@@ -55,9 +61,10 @@ export const TabSetting: React.FC<Props> = ({}) => {
           css={tabTitleInputStyle}
           onChange={(e) => setNewTabTitle(e.target.value)}
           value={newTabTitle}
+          onKeyPress={(e) => onKeyEnter(e)}
         />
         <img
-          // css={newList ? arrowStyle : disabledArrowStyle}
+          css={newTabTitle ? arrowStyle : disabledArrowStyle}
           src={arrow}
           alt="上矢印"
           onClick={newTabTitle ? () => saveTabTitle() : undefined}
@@ -100,4 +107,13 @@ const tabTitleInputStyle = css({
 const deleteStyle = css({
   width: 30,
   height: 30,
+})
+
+const arrowStyle = css({
+  width: 30,
+  height: 30,
+})
+
+const disabledArrowStyle = css(arrowStyle, {
+  opacity: 0.3,
 })
