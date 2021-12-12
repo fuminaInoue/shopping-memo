@@ -11,12 +11,21 @@ export const TabSetting: React.FC<Props> = ({}) => {
   const [tabTitles, setTabTitles] = useState([''])
 
   const saveTabTitle = () => {
+    if (validate()) {
+      window.alert('すでに登録されているタブ名です')
+      return
+    }
     const _tabTitles = JSON.parse(localStorage.getItem('tabTitles')!)
     const newTabTitles: string[] = _tabTitles ? _tabTitles : []
     newTabTitles.push(newTabTitle)
     localStorage.setItem('tabTitles', JSON.stringify(newTabTitles))
     setTabTitles(newTabTitles)
     setNewTabTitle('')
+  }
+
+  const validate = () => {
+    const _tabTitles = JSON.parse(localStorage.getItem('tabTitles')!)
+    return _tabTitles.includes(newTabTitle)
   }
 
   const onKeyEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
