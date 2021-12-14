@@ -1,7 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react'
 import { css } from '@emotion/react'
-import arrow from '../../images/arrow.svg'
 
 type Props = {
   newList: string
@@ -10,14 +9,12 @@ type Props = {
     e: React.KeyboardEvent<HTMLInputElement>,
     newList: string,
   ) => void
-  saveList: (newList: string) => void
 }
 
 export const InputField: React.FC<Props> = ({
   newList,
   setNewList,
   onKeyEnter,
-  saveList,
 }) => {
   const onChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewList(e.target.value)
@@ -31,12 +28,6 @@ export const InputField: React.FC<Props> = ({
         onChange={(e) => onChangeValue(e)}
         onKeyPress={(e) => onKeyEnter(e, newList)}
         value={newList}
-      />
-      <img
-        css={newList ? arrowStyle : disabledArrowStyle}
-        src={arrow}
-        alt="上矢印"
-        onClick={newList ? () => saveList(newList) : undefined}
       />
     </div>
   )
@@ -53,20 +44,11 @@ const listStyle = css({
 })
 
 const listInputStyle = css({
-  width: '80%',
+  width: '100%',
   height: 40,
   fontSize: 16,
   letterSpacing: 2,
   paddingLeft: 16,
   border: '1px solid #333',
   borderRadius: 8,
-})
-
-const arrowStyle = css({
-  width: 30,
-  height: 30,
-})
-
-const disabledArrowStyle = css(arrowStyle, {
-  opacity: 0.3,
 })
