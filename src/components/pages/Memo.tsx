@@ -75,7 +75,6 @@ export const Memo: React.FC<Props> = () => {
           newList={newList}
           setNewList={setNewList}
           onKeyEnter={onKeyEnter}
-          saveList={saveList}
         />
       </div>
       <Tab tabNumber={tabNumber} onCLickTab={onCLickTab} />
