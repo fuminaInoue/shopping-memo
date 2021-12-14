@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import React, { useState } from 'react'
 import { css } from '@emotion/react'
+import plus from '../../images/plus.png'
 
 import { List, InputField, Header, Tab } from 'components/molecules'
 import { ListType } from 'models/MemoType'
@@ -12,8 +13,9 @@ export const Memo: React.FC<Props> = () => {
     ? JSON.parse(localStorage.getItem('list')!)
     : []
   const [list, setList] = useState<ListType[][]>(storageList)
-  const [newList, setNewList] = useState<string>('')
-  const [tabNumber, setTabNumber] = useState<number>(0)
+  const [newList, setNewList] = useState('')
+  const [tabNumber, setTabNumber] = useState(0)
+  const [showInputField, setShowInputField] = useState(false)
 
   const onKeyEnter = (
     e: React.KeyboardEvent<HTMLInputElement>,
@@ -30,6 +32,7 @@ export const Memo: React.FC<Props> = () => {
     _list[tabNumber].push({ memo: newList, isChecked: false })
     localStorage.setItem('list', JSON.stringify(_list))
     setNewList('')
+    setShowInputField(false)
   }
 
   const onClickCheckBox = (i: number) => {
@@ -71,11 +74,20 @@ export const Memo: React.FC<Props> = () => {
           onClickDelete={onClickDelete}
           onClickCheckBox={onClickCheckBox}
         />
-        <InputField
-          newList={newList}
-          setNewList={setNewList}
-          onKeyEnter={onKeyEnter}
-        />
+        {showInputField && (
+          <InputField
+            newList={newList}
+            setNewList={setNewList}
+            onKeyEnter={onKeyEnter}
+          />
+        )}
+        <div css={plusStyle}>
+          <img
+            src={plus}
+            alt="リスト追加"
+            onClick={() => setShowInputField(true)}
+          />
+        </div>
       </div>
       <Tab tabNumber={tabNumber} onCLickTab={onCLickTab} />
     </>
@@ -84,4 +96,14 @@ export const Memo: React.FC<Props> = () => {
 
 const memoContainerStyle = css({
   height: 'calc(100vh - 46px)',
+})
+
+const plusStyle = css({
+  padding: '8px 0',
+  margin: '0 auto',
+  width: '90%',
+  img: {
+    margin: '0 0 0 auto',
+    display: 'block',
+  },
 })
