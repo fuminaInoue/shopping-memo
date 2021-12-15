@@ -4,6 +4,7 @@ import { css } from '@emotion/react'
 import { useNavigate } from 'react-router-dom'
 import { ThemeColor, TabSetting } from 'components/organisms'
 import close from '../../images/close.svg'
+import trash from '../../images/trash.png'
 
 type Props = {}
 
@@ -20,10 +21,16 @@ export const Setting: React.FC<Props> = () => {
     }
   }, [themeColor])
 
+  const allDelete = () => {
+    const result = window.confirm('全てのメモを削除してよろしいですか？')
+    if (result) localStorage.removeItem('list')
+  }
+
   return (
     <>
       <div style={{ background: themeColor }} css={headerStyle}>
-        <img src={close} alt="全件削除" onClick={() => navigate('/')} />
+        <img src={trash} alt="全件削除" onClick={() => allDelete()} />
+        <img src={close} alt="閉じる" onClick={() => navigate('/')} />
       </div>
       <ThemeColor setThemeColor={setThemeColor} />
       <TabSetting />
