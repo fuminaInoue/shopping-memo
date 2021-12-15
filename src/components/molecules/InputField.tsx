@@ -28,7 +28,7 @@ export const InputField: React.FC<Props> = ({
         onChange={(e) => onChangeValue(e)}
         onKeyPress={(e) => onKeyEnter(e, newList)}
         value={newList}
-        enterKeyHint="next"
+        enterKeyHint="done"
       />
     </div>
   )
