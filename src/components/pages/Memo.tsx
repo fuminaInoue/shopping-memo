@@ -68,31 +68,38 @@ export const Memo: React.FC<Props> = () => {
     <>
       <div css={memoContainerStyle}>
         <Header onClickAllDelete={onClickAllDelete} />
-        <List
-          list={list}
-          tabNumber={tabNumber}
-          onClickDelete={onClickDelete}
-          onClickCheckBox={onClickCheckBox}
-        />
-        {showInputField && (
-          <InputField
-            newList={newList}
-            setNewList={setNewList}
-            onKeyEnter={onKeyEnter}
+        <div css={listWrapperStyle}>
+          <List
+            list={list}
+            tabNumber={tabNumber}
+            onClickDelete={onClickDelete}
+            onClickCheckBox={onClickCheckBox}
           />
-        )}
-        <div css={plusStyle}>
-          <img
-            src={plus}
-            alt="リスト追加"
-            onClick={() => setShowInputField(true)}
-          />
+          {showInputField && (
+            <InputField
+              newList={newList}
+              setNewList={setNewList}
+              onKeyEnter={onKeyEnter}
+            />
+          )}
+          <div css={plusStyle}>
+            <img
+              src={plus}
+              alt="リスト追加"
+              onClick={() => setShowInputField(true)}
+            />
+          </div>
         </div>
       </div>
       <Tab tabNumber={tabNumber} onCLickTab={onCLickTab} />
     </>
   )
 }
+
+const listWrapperStyle = css({
+  height: 'calc(100vh - 115px)',
+  overflow: 'scroll',
+})
 
 const memoContainerStyle = css({
   height: 'calc(100vh - 46px)',
