@@ -50,7 +50,7 @@ const listStyle = css({
   display: 'flex',
   justifyContent: 'flex-start',
   alignItems: 'center',
-  padding: '8px 0',
+  padding: '4px 0',
   margin: '0 auto 8px',
   width: '90%',
   fontSize: 18,
