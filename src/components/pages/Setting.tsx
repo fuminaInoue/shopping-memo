@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { css } from '@emotion/react'
 import { useNavigate } from 'react-router-dom'
-import { ThemeColor, TabSetting } from 'components/organisms'
+import { ThemeColor, TabSetting, FontSize } from 'components/organisms'
 import close from '../../images/close.svg'
 import trash from '../../images/trash.png'
 
@@ -33,6 +33,7 @@ export const Setting: React.FC<Props> = () => {
         <img src={close} alt="閉じる" onClick={() => navigate('/')} />
       </div>
       <ThemeColor setThemeColor={setThemeColor} />
+      <FontSize />
       <TabSetting />
     </>
   )
