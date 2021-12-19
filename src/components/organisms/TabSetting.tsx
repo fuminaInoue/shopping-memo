@@ -25,6 +25,8 @@ export const TabSetting: React.FC<Props> = ({}) => {
 
   const validate = () => {
     const _tabTitles = JSON.parse(localStorage.getItem('tabTitles')!)
+      ? JSON.parse(localStorage.getItem('tabTitles')!)
+      : []
     return _tabTitles.includes(newTabTitle)
   }
 
