@@ -27,7 +27,7 @@ export const Setting: React.FC<Props> = () => {
   }
 
   return (
-    <>
+    <div css={settingStyle}>
       <div style={{ background: themeColor }} css={headerStyle}>
         <img src={trash} alt="全件削除" onClick={() => allDelete()} />
         <img src={close} alt="閉じる" onClick={() => navigate('/')} />
@@ -35,9 +35,13 @@ export const Setting: React.FC<Props> = () => {
       <ThemeColor setThemeColor={setThemeColor} />
       <FontSize />
       <TabSetting />
-    </>
+    </div>
   )
 }
+
+const settingStyle = css({
+  height: '100vh',
+})
 
 const headerStyle = css({
   display: 'flex',

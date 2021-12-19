@@ -16,6 +16,7 @@ export const Memo: React.FC<Props> = () => {
   const [newList, setNewList] = useState('')
   const [tabNumber, setTabNumber] = useState(0)
   const [showInputField, setShowInputField] = useState(false)
+  const fontSize = localStorage.getItem('fontSize')
 
   const onKeyEnter = (
     e: React.KeyboardEvent<HTMLInputElement>,
@@ -72,6 +73,7 @@ export const Memo: React.FC<Props> = () => {
           <List
             list={list}
             tabNumber={tabNumber}
+            fontSize={fontSize}
             onClickDelete={onClickDelete}
             onClickCheckBox={onClickCheckBox}
           />

@@ -8,6 +8,7 @@ import { ListType } from 'models/MemoType'
 type Props = {
   list: ListType[][]
   tabNumber: number
+  fontSize: string | null
   onClickDelete: (i: number) => void
   onClickCheckBox: (i: number) => void
 }
@@ -15,17 +16,33 @@ type Props = {
 export const List: React.FC<Props> = ({
   list,
   tabNumber,
+  fontSize,
   onClickDelete,
   onClickCheckBox,
 }) => {
+  const _fontSize = (): number => {
+    if (fontSize === 'small') return 14
+    if (fontSize === 'mideum') return 18
+    if (fontSize === 'large') return 22
+    return 16
+  }
+
+  const _imageSize = (): number => {
+    if (fontSize === 'small') return 20
+    if (fontSize === 'mideum') return 30
+    if (fontSize === 'large') return 40
+    return 30
+  }
+
   return (
     <>
       {list[tabNumber] &&
         list[tabNumber].map((v: ListType, i: number) => {
           return (
-            <div key={i} css={listStyle}>
+            <div key={i} css={listStyle} style={{ fontSize: _fontSize() }}>
               <img
                 css={deleteStyle}
+                style={{ width: _imageSize(), height: _imageSize() }}
                 src={minus}
                 alt="削除"
                 onClick={() => onClickDelete(i)}
@@ -34,6 +51,7 @@ export const List: React.FC<Props> = ({
                 {v.memo}
               </div>
               <input
+                style={{ width: _imageSize(), height: _imageSize() }}
                 css={checkStyle}
                 type="checkbox"
                 checked={v.isChecked}
@@ -53,21 +71,16 @@ const listStyle = css({
   padding: '4px 0',
   margin: '0 auto 8px',
   width: '90%',
-  fontSize: 18,
   borderBottom: '1px solid #ccc',
   fontWeight: 'bold',
   letterSpacing: 2,
 })
 
 const deleteStyle = css({
-  width: 30,
-  height: 30,
   marginRight: 32,
 })
 
 const checkStyle = css({
-  minWidth: 30,
-  height: 30,
   margin: '0 0 0 auto',
 })
 
