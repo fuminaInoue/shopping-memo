@@ -65,6 +65,11 @@ export const Memo: React.FC<Props> = () => {
     setTabNumber(index)
   }
 
+  const onClickAddClick = () => {
+    setShowInputField(true)
+    document.getElementById('inputField')?.focus()
+  }
+
   return (
     <>
       <div css={memoContainerStyle}>
@@ -88,7 +93,7 @@ export const Memo: React.FC<Props> = () => {
             <img
               src={plus}
               alt="リスト追加"
-              onClick={() => setShowInputField(true)}
+              onClick={() => onClickAddClick()}
             />
           </div>
         </div>

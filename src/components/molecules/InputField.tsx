@@ -23,12 +23,14 @@ export const InputField: React.FC<Props> = ({
   return (
     <div css={listStyle}>
       <input
+        id="inputField"
         css={listInputStyle}
         type="text"
         onChange={(e) => onChangeValue(e)}
         onKeyPress={(e) => onKeyEnter(e, newList)}
         value={newList}
         enterKeyHint="done"
+        autoFocus
       />
     </div>
   )
