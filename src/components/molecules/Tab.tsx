@@ -45,10 +45,12 @@ const tabWrapperStyle = css({
   display: 'flex',
   alignItems: 'flex-end',
   marginTop: 8,
+  overflow: 'scroll',
+  width: '100%',
 })
 
 const tabStyle = css({
-  padding: '4px 4px 2px 4px',
+  padding: '8px 16px',
   boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px',
   borderBottom: 'none',
   width: '25%',
@@ -57,11 +59,11 @@ const tabStyle = css({
   fontSize: 14,
   background: '#F2FCF9',
   borderRadius: '8px 8px 0 0',
+  whiteSpace: 'nowrap',
 })
 
 const activeTabStyle = css(tabStyle, {
   background: '#72C1DF',
   fontSize: 18,
-  padding: '8px 8px 8px 8px',
   letterSpacing: 2,
 })
