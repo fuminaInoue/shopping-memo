@@ -12,22 +12,20 @@ export const FontSize: React.FC<Props> = ({}) => {
   const defalutSize = localStorage.getItem('fontSize')
 
   return (
-    <>
-      <div css={contentsStyle}>
-        <div css={themeStyle}>文字サイズ</div>
-        <select
-          css={themeSelectStyle}
-          defaultValue={defalutSize ? defalutSize : 'mideum'}
-          onChange={(e) => changefontSize(e)}
-          name=""
-          id=""
-        >
-          <option value="small">小</option>
-          <option value="mideum">中</option>
-          <option value="large">大</option>
-        </select>
-      </div>
-    </>
+    <div css={contentsStyle}>
+      <div css={themeStyle}>文字サイズ</div>
+      <select
+        css={themeSelectStyle}
+        defaultValue={defalutSize ? defalutSize : 'mideum'}
+        onChange={(e) => changefontSize(e)}
+        name=""
+        id=""
+      >
+        <option value="small">小</option>
+        <option value="mideum">中</option>
+        <option value="large">大</option>
+      </select>
+    </div>
   )
 }
 

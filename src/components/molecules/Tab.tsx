@@ -10,7 +10,7 @@ type Props = {
 export const Tab: React.FC<Props> = ({ tabNumber, onCLickTab }) => {
   const tabs = localStorage.getItem('tabTitles')
     ? JSON.parse(localStorage.getItem('tabTitles')!)
-    : ['tab1']
+    : ['メモ']
   const [themeColor, setThemeColor] = useState('')
 
   useEffect(() => {

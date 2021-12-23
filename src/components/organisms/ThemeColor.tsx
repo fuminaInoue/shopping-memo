@@ -13,23 +13,21 @@ export const ThemeColor: React.FC<Props> = ({ setThemeColor }) => {
   }
 
   return (
-    <>
-      <div css={contentsStyle}>
-        <div css={themeStyle}>テーマカラー</div>
-        <select
-          css={themeSelectStyle}
-          name=""
-          id=""
-          onChange={(e) => onChangeThemeColor(e.target.value)}
-        >
-          <option value="#afeeee">ターコイズ</option>
-          <option value="#ffe4e1">ローズ</option>
-          <option value="#fffff0">アイボリー</option>
-          <option value="#9370db">むらさき</option>
-          <option value="#808080">グレー</option>
-        </select>
-      </div>
-    </>
+    <div css={contentsStyle}>
+      <div css={themeStyle}>テーマカラー</div>
+      <select
+        css={themeSelectStyle}
+        name=""
+        id=""
+        onChange={(e) => onChangeThemeColor(e.target.value)}
+      >
+        <option value="#afeeee">ターコイズ</option>
+        <option value="#ffe4e1">ローズ</option>
+        <option value="#fffff0">アイボリー</option>
+        <option value="#9370db">むらさき</option>
+        <option value="#808080">グレー</option>
+      </select>
+    </div>
   )
 }
 
