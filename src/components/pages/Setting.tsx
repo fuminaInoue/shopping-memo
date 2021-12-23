@@ -2,7 +2,12 @@
 import React, { useEffect, useState } from 'react'
 import { css } from '@emotion/react'
 import { useNavigate } from 'react-router-dom'
-import { ThemeColor, TabSetting, FontSize } from 'components/organisms'
+import {
+  ThemeColor,
+  TabSetting,
+  FontSize,
+  ResetButton,
+} from 'components/organisms'
 import close from '../../images/close.svg'
 import trash from '../../images/trash.png'
 
@@ -35,6 +40,7 @@ export const Setting: React.FC<Props> = () => {
       <ThemeColor setThemeColor={setThemeColor} />
       <FontSize />
       <TabSetting />
+      <ResetButton />
     </div>
   )
 }
