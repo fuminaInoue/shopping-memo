@@ -17,7 +17,9 @@ export const ResetButton: React.FC<Props> = ({}) => {
   }, [])
 
   const onClickReset = () => {
-    localStorage.clear()
+    const result = window.confirm('リセットしてよろしいですか？')
+    if (result) localStorage.clear()
+    window.location.reload()
   }
 
   return (

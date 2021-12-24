@@ -24,6 +24,7 @@ export const Memo: React.FC<Props> = () => {
   ) => {
     if (e.key === 'Enter') {
       saveList(newList)
+      setShowInputField(true)
     }
   }
 
