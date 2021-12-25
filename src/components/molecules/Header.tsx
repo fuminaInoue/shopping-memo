@@ -33,4 +33,7 @@ const headerStyle = css({
     width: 30,
     height: 30,
   },
+  '@media(min-width: 601px)': {
+    borderRadius: '10px 10px 0 0',
+  },
 })

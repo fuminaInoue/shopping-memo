@@ -47,6 +47,11 @@ export const Setting: React.FC<Props> = () => {
 
 const settingStyle = css({
   height: '100vh',
+  background: '#fff',
+  '@media(min-width: 601px)': {
+    height: 'calc(100vh - 40px)',
+    borderRadius: '10px',
+  },
 })
 
 const headerStyle = css({
@@ -58,5 +63,8 @@ const headerStyle = css({
   img: {
     width: 30,
     height: 30,
+  },
+  '@media(min-width: 601px)': {
+    borderRadius: '10px 10px 0 0',
   },
 })
