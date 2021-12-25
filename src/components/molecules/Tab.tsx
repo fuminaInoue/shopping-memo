@@ -23,21 +23,21 @@ export const Tab: React.FC<Props> = ({ tabNumber, onCLickTab }) => {
   }, [themeColor])
 
   return (
-    <div css={tabWrapperStyle}>
+    <ul css={tabWrapperStyle}>
       {tabs &&
         tabs.map((v: string, index: number) => {
           return (
-            <div
+            <li
               key={v}
               style={{ background: tabNumber === index ? themeColor : '#ccc' }}
               css={tabNumber === index ? activeTabStyle : tabStyle}
               onClick={() => onCLickTab(index)}
             >
               {v}
-            </div>
+            </li>
           )
         })}
-    </div>
+    </ul>
   )
 }
 
@@ -45,6 +45,7 @@ const tabWrapperStyle = css({
   display: 'flex',
   alignItems: 'flex-end',
   marginTop: 8,
+  padding: 0,
   overflow: 'scroll',
   width: '100%',
 })
@@ -60,6 +61,12 @@ const tabStyle = css({
   background: '#F2FCF9',
   borderRadius: '8px 8px 0 0',
   whiteSpace: 'nowrap',
+  listStyle: 'none',
+  '@media(min-width: 601px)': {
+    ':first-child': {
+      borderRadius: '8px 8px 0 10px',
+    },
+  },
 })
 
 const activeTabStyle = css(tabStyle, {

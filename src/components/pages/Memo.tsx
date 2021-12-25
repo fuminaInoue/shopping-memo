@@ -72,7 +72,7 @@ export const Memo: React.FC<Props> = () => {
   }
 
   return (
-    <>
+    <div css={mainContainerStyle}>
       <div css={memoContainerStyle}>
         <Header onClickAllDelete={onClickAllDelete} />
         <div css={listWrapperStyle}>
@@ -96,9 +96,16 @@ export const Memo: React.FC<Props> = () => {
         </div>
       </div>
       <Tab tabNumber={tabNumber} onCLickTab={onCLickTab} />
-    </>
+    </div>
   )
 }
+
+const mainContainerStyle = css({
+  background: '#fff',
+  '@media(min-width: 601px)': {
+    borderRadius: '10px',
+  },
+})
 
 const listWrapperStyle = css({
   height: 'calc(100vh - 115px)',
@@ -107,6 +114,9 @@ const listWrapperStyle = css({
 
 const memoContainerStyle = css({
   height: 'calc(100vh - 46px)',
+  '@media(min-width: 601px)': {
+    height: 'calc(100vh - 86px)',
+  },
 })
 
 const plusStyle = css({
