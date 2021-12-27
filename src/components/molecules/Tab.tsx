@@ -44,7 +44,7 @@ export const Tab: React.FC<Props> = ({ tabNumber, onCLickTab }) => {
 const tabWrapperStyle = css({
   display: 'flex',
   alignItems: 'flex-end',
-  marginTop: 8,
+  margin: 0,
   padding: 0,
   overflow: 'scroll',
   width: '100%',
@@ -62,11 +62,6 @@ const tabStyle = css({
   borderRadius: '8px 8px 0 0',
   whiteSpace: 'nowrap',
   listStyle: 'none',
-  '@media(min-width: 601px)': {
-    ':first-child': {
-      borderRadius: '8px 8px 0 10px',
-    },
-  },
 })
 
 const activeTabStyle = css(tabStyle, {
