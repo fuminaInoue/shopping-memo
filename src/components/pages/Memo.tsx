@@ -53,7 +53,11 @@ export const Memo: React.FC<Props> = () => {
   }
 
   const onClickAllDelete = () => {
-    const result = window.confirm(`tab${tabNumber + 1}をすべて削除しますか？`)
+    const tabTitles = localStorage.getItem('tabTitles')
+      ? JSON.parse(localStorage.getItem('tabTitles')!)
+      : []
+    const currentTab = tabTitles[tabNumber] ? tabTitles[tabNumber] : 'tab1'
+    const result = window.confirm(`${currentTab}をすべて削除しますか？`)
     if (result) {
       let _list = [...list]
       _list[tabNumber] = []
