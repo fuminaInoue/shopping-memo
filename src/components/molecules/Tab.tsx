@@ -11,6 +11,10 @@ export const Tab: React.FC<Props> = ({ tabNumber, onCLickTab }) => {
   const tabs = localStorage.getItem('tabTitles')
     ? JSON.parse(localStorage.getItem('tabTitles')!)
     : ['メモ']
+  const notChecked = localStorage.getItem('notChecked')
+    ? JSON.parse(localStorage.getItem('notChecked')!)
+    : []
+
   const [themeColor, setThemeColor] = useState('')
 
   useEffect(() => {
@@ -26,6 +30,7 @@ export const Tab: React.FC<Props> = ({ tabNumber, onCLickTab }) => {
     <ul css={tabWrapperStyle}>
       {tabs &&
         tabs.map((v: string, index: number) => {
+          console.log(notChecked[index])
           return (
             <li
               key={v}
@@ -33,7 +38,10 @@ export const Tab: React.FC<Props> = ({ tabNumber, onCLickTab }) => {
               css={tabNumber === index ? activeTabStyle : tabStyle}
               onClick={() => onCLickTab(index)}
             >
-              {v}
+              <div css={tabTitleStyle}>{v}</div>
+              {notChecked[index] !== '0' && notChecked[index] !== undefined && (
+                <div css={notCheckedMarkStyle}>{notChecked[index]}</div>
+              )}
             </li>
           )
         })}
@@ -62,10 +70,31 @@ const tabStyle = css({
   borderRadius: '8px 8px 0 0',
   whiteSpace: 'nowrap',
   listStyle: 'none',
+  display: 'flex',
+  alignItems: 'center',
 })
 
 const activeTabStyle = css(tabStyle, {
   background: '#72C1DF',
-  fontSize: 18,
-  letterSpacing: 2,
+  fontSize: 14,
+  letterSpacing: 0.4,
+})
+
+const tabTitleStyle = css({
+  width: '100%',
+  textOverflow: 'ellipsis',
+  overflow: 'hidden',
+  whiteSpace: 'nowrap',
+})
+const notCheckedMarkStyle = css({
+  background: '#ff8c00',
+  borderRadius: '50%',
+  color: '#fff',
+  width: 20,
+  height: 20,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  marginLeft: 4,
+  fontSize: 14,
 })

@@ -35,12 +35,31 @@ export const Memo: React.FC<Props> = () => {
     localStorage.setItem('list', JSON.stringify(_list))
     setNewList('')
     setShowInputField(false)
+    notChecked(1)
+  }
+
+  const notChecked = (plus: number) => {
+    let _notChecked: string[] = localStorage.getItem('notChecked')
+      ? JSON.parse(localStorage.getItem('notChecked')!)
+      : []
+    _notChecked[tabNumber] = _notChecked[tabNumber]
+      ? String(Number(_notChecked[tabNumber]) + plus)
+      : '1'
+    localStorage.setItem('notChecked', JSON.stringify(_notChecked))
   }
 
   const onClickCheckBox = (i: number) => {
     let _list: ListType[][] = [...list]
     _list[tabNumber] = list[tabNumber]
-    _list[tabNumber][i]['isChecked'] = !_list[tabNumber][i]['isChecked']
+
+    if (_list[tabNumber][i]['isChecked']) {
+      _list[tabNumber][i]['isChecked'] = false
+      notChecked(1)
+    } else {
+      _list[tabNumber][i]['isChecked'] = true
+      notChecked(-1)
+    }
+
     localStorage.setItem('list', JSON.stringify(_list))
     setList(_list)
   }
