@@ -28,7 +28,11 @@ export const Setting: React.FC<Props> = () => {
 
   const allDelete = () => {
     const result = window.confirm('全てのメモを削除してよろしいですか？')
-    if (result) localStorage.removeItem('list')
+    if (result) {
+      // themeColorやタブの設定は削除しちゃダメ
+      localStorage.removeItem('list')
+      localStorage.removeItem('notChecked')
+    }
   }
 
   return (

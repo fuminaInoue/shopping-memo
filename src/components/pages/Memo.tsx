@@ -38,13 +38,22 @@ export const Memo: React.FC<Props> = () => {
     notChecked(1)
   }
 
-  const notChecked = (plus: number) => {
+  const notChecked = (num: number, isAll?: boolean) => {
     let _notChecked: string[] = localStorage.getItem('notChecked')
       ? JSON.parse(localStorage.getItem('notChecked')!)
       : []
-    _notChecked[tabNumber] = _notChecked[tabNumber]
-      ? String(Number(_notChecked[tabNumber]) + plus)
-      : '1'
+
+    // 全削除の場合はnotCheckedも全削除
+    if (isAll) {
+      _notChecked[tabNumber] = String(
+        Number(_notChecked[tabNumber]) - Number(_notChecked[tabNumber]),
+      )
+    } else {
+      _notChecked[tabNumber] = _notChecked[tabNumber]
+        ? String(Number(_notChecked[tabNumber]) + num)
+        : '1'
+    }
+
     localStorage.setItem('notChecked', JSON.stringify(_notChecked))
   }
 
@@ -69,6 +78,7 @@ export const Memo: React.FC<Props> = () => {
     _list[tabNumber].splice(i, 1)
     localStorage.setItem('list', JSON.stringify(_list))
     setList(_list)
+    notChecked(-1)
   }
 
   const onClickAllDelete = () => {
@@ -83,6 +93,7 @@ export const Memo: React.FC<Props> = () => {
       localStorage.setItem('list', JSON.stringify(_list))
       setList(_list)
     }
+    notChecked(0, true)
   }
 
   const onCLickTab = (index: number) => {
