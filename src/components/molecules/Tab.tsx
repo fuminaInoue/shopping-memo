@@ -65,36 +65,37 @@ const tabStyle = css({
   width: '25%',
   textAlign: 'center',
   fontWeight: 'bold',
-  fontSize: 14,
+  fontSize: 16,
   background: '#F2FCF9',
   borderRadius: '8px 8px 0 0',
   whiteSpace: 'nowrap',
   listStyle: 'none',
   display: 'flex',
   alignItems: 'center',
+  justifyContent: 'center',
 })
 
 const activeTabStyle = css(tabStyle, {
   background: '#72C1DF',
-  fontSize: 14,
-  letterSpacing: 0.4,
+  letterSpacing: 1.6,
 })
 
 const tabTitleStyle = css({
-  width: '100%',
   textOverflow: 'ellipsis',
   overflow: 'hidden',
   whiteSpace: 'nowrap',
 })
+
 const notCheckedMarkStyle = css({
   background: '#ff8c00',
-  borderRadius: '50%',
+  borderRadius: 5,
+  padding: 2,
   color: '#fff',
   width: 20,
   height: 20,
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  marginLeft: 4,
-  fontSize: 14,
+  marginLeft: 2,
+  fontSize: 16,
 })
