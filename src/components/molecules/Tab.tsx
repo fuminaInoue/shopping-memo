@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from 'react'
 import { css } from '@emotion/react'
 
+import { ListType } from 'models/MemoType'
+
 type Props = {
   tabNumber: number
   onCLickTab: (index: number) => void
@@ -11,11 +13,15 @@ export const Tab: React.FC<Props> = ({ tabNumber, onCLickTab }) => {
   const tabs = localStorage.getItem('tabTitles')
     ? JSON.parse(localStorage.getItem('tabTitles')!)
     : ['メモ']
-  const notChecked = localStorage.getItem('notChecked')
-    ? JSON.parse(localStorage.getItem('notChecked')!)
-    : []
-
   const [themeColor, setThemeColor] = useState('')
+
+  const _notChecked = (index: number) => {
+    if (!localStorage.getItem('list')) return 0
+    const list = JSON.parse(localStorage.getItem('list')!)
+    if (!list[index]) return 0
+    const notCheckedList = list[index].filter((v: ListType) => !v.isChecked)
+    return notCheckedList.length
+  }
 
   useEffect(() => {
     if (localStorage.getItem('themeColor')) {
@@ -30,7 +36,6 @@ export const Tab: React.FC<Props> = ({ tabNumber, onCLickTab }) => {
     <ul css={tabWrapperStyle}>
       {tabs &&
         tabs.map((v: string, index: number) => {
-          console.log(notChecked[index])
           return (
             <li
               key={v}
@@ -39,8 +44,8 @@ export const Tab: React.FC<Props> = ({ tabNumber, onCLickTab }) => {
               onClick={() => onCLickTab(index)}
             >
               <div css={tabTitleStyle}>{v}</div>
-              {notChecked[index] !== '0' && notChecked[index] !== undefined && (
-                <div css={notCheckedMarkStyle}>{notChecked[index]}</div>
+              {_notChecked(index) !== 0 && (
+                <div css={notCheckedMarkStyle}>{_notChecked(index)}</div>
               )}
             </li>
           )
