@@ -48,7 +48,8 @@ export const Memo: React.FC<Props> = () => {
     setList(_list)
   }
 
-  const onClickDelete = (i: number) => {
+  const onClickDelete = (i: number, memo: string) => {
+    if (!window.confirm(`${memo}を削除しますか？`)) return
     let _list = [...list]
     _list[tabNumber].splice(i, 1)
     localStorage.setItem('list', JSON.stringify(_list))
