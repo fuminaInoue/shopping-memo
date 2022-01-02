@@ -18,23 +18,20 @@ export const Memo: React.FC<Props> = () => {
   const [showInputField, setShowInputField] = useState(false)
   const fontSize = localStorage.getItem('fontSize')
 
-  const onKeyEnter = (
-    e: React.KeyboardEvent<HTMLInputElement>,
-    newList: string,
-  ) => {
+  const onKeyEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      saveList(newList)
+      saveList()
       setShowInputField(true)
     }
   }
 
-  const saveList = (newList: string) => {
+  const saveList = () => {
     let _list: Object[][] = list
     _list[tabNumber] = list[tabNumber] ? list[tabNumber] : []
     _list[tabNumber].push({ memo: newList, isChecked: false })
     localStorage.setItem('list', JSON.stringify(_list))
     setNewList('')
-    setShowInputField(false)
+    setShowInputField(true)
   }
 
   const onClickCheckBox = (i: number) => {
@@ -77,8 +74,9 @@ export const Memo: React.FC<Props> = () => {
   }
 
   const onClickAddList = () => {
-    setShowInputField(true)
     document.getElementById('inputField')?.focus()
+    if (newList !== '') saveList()
+    else setShowInputField(true)
   }
 
   return (
