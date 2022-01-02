@@ -49,6 +49,6 @@ const listInputStyle = css({
   fontSize: 16,
   letterSpacing: 2,
   paddingLeft: 16,
-  border: '1px solid #333',
   borderRadius: 8,
+  border: 'none',
 })

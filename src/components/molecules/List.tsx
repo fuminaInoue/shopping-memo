@@ -9,7 +9,7 @@ type Props = {
   list: ListType[][]
   tabNumber: number
   fontSize: string | null
-  onClickDelete: (i: number) => void
+  onClickDelete: (i: number, memo: string) => void
   onClickCheckBox: (i: number) => void
 }
 
@@ -45,7 +45,7 @@ export const List: React.FC<Props> = ({
                 style={{ width: _imageSize(), height: _imageSize() }}
                 src={minus}
                 alt="削除"
-                onClick={() => onClickDelete(i)}
+                onClick={() => onClickDelete(i, v.memo)}
               />
               <div css={v.isChecked ? checkedStyle : notCheckedStyle}>
                 {v.memo}
