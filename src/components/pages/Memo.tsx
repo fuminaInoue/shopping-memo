@@ -18,43 +18,20 @@ export const Memo: React.FC<Props> = () => {
   const [showInputField, setShowInputField] = useState(false)
   const fontSize = localStorage.getItem('fontSize')
 
-  const onKeyEnter = (
-    e: React.KeyboardEvent<HTMLInputElement>,
-    newList: string,
-  ) => {
+  const onKeyEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      saveList(newList)
+      saveList()
       setShowInputField(true)
     }
   }
 
-  const saveList = (newList: string) => {
+  const saveList = () => {
     let _list: Object[][] = list
     _list[tabNumber] = list[tabNumber] ? list[tabNumber] : []
     _list[tabNumber].push({ memo: newList, isChecked: false })
     localStorage.setItem('list', JSON.stringify(_list))
     setNewList('')
-    setShowInputField(false)
-    notChecked(1)
-  }
-
-  const notChecked = (num: number, isAll?: boolean) => {
-    let _notChecked: string[] = localStorage.getItem('notChecked')
-      ? JSON.parse(localStorage.getItem('notChecked')!)
-      : []
-
-    // 全削除の場合はnotCheckedも全削除
-    if (isAll) {
-      _notChecked[tabNumber] = String(
-        Number(_notChecked[tabNumber]) - Number(_notChecked[tabNumber]),
-      )
-    } else {
-      _notChecked[tabNumber] = _notChecked[tabNumber]
-        ? String(Number(_notChecked[tabNumber]) + num)
-        : '1'
-    }
-
-    localStorage.setItem('notChecked', JSON.stringify(_notChecked))
+    setShowInputField(true)
   }
 
   const onClickCheckBox = (i: number) => {
@@ -63,10 +40,8 @@ export const Memo: React.FC<Props> = () => {
 
     if (_list[tabNumber][i]['isChecked']) {
       _list[tabNumber][i]['isChecked'] = false
-      notChecked(1)
     } else {
       _list[tabNumber][i]['isChecked'] = true
-      notChecked(-1)
     }
 
     localStorage.setItem('list', JSON.stringify(_list))
@@ -78,7 +53,6 @@ export const Memo: React.FC<Props> = () => {
     _list[tabNumber].splice(i, 1)
     localStorage.setItem('list', JSON.stringify(_list))
     setList(_list)
-    notChecked(-1)
   }
 
   const onClickAllDelete = () => {
@@ -93,7 +67,6 @@ export const Memo: React.FC<Props> = () => {
       localStorage.setItem('list', JSON.stringify(_list))
       setList(_list)
     }
-    notChecked(0, true)
   }
 
   const onCLickTab = (index: number) => {
@@ -101,8 +74,9 @@ export const Memo: React.FC<Props> = () => {
   }
 
   const onClickAddList = () => {
-    setShowInputField(true)
     document.getElementById('inputField')?.focus()
+    if (newList !== '') saveList()
+    else setShowInputField(true)
   }
 
   return (

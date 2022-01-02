@@ -5,10 +5,7 @@ import { css } from '@emotion/react'
 type Props = {
   newList: string
   setNewList: React.Dispatch<React.SetStateAction<string>>
-  onKeyEnter: (
-    e: React.KeyboardEvent<HTMLInputElement>,
-    newList: string,
-  ) => void
+  onKeyEnter: (e: React.KeyboardEvent<HTMLInputElement>) => void
 }
 
 export const InputField: React.FC<Props> = ({
@@ -27,7 +24,7 @@ export const InputField: React.FC<Props> = ({
         css={listInputStyle}
         type="text"
         onChange={(e) => onChangeValue(e)}
-        onKeyPress={(e) => onKeyEnter(e, newList)}
+        onKeyPress={(e) => onKeyEnter(e)}
         value={newList}
         enterKeyHint="done"
         autoFocus
