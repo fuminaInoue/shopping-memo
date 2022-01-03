@@ -65,7 +65,7 @@ const tabWrapperStyle = css({
 
 const tabStyle = css({
   padding: '8px 16px',
-  boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px',
+  boxShadow: '3px 0px 6px 0px rgba(0, 0, 0, 0.45)',
   borderBottom: 'none',
   width: '25%',
   textAlign: 'center',
@@ -96,8 +96,8 @@ const notCheckedMarkStyle = css({
   borderRadius: 5,
   padding: 2,
   color: '#fff',
-  width: 20,
-  height: 20,
+  width: 18,
+  height: 18,
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
