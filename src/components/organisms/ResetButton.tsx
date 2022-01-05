@@ -23,15 +23,21 @@ export const ResetButton: React.FC<Props> = ({}) => {
   }
 
   return (
-    <div
-      css={buttonStyle}
-      style={{ background: themeColor }}
-      onClick={() => onClickReset()}
-    >
-      リセット
+    <div css={buttonWrapperStyle}>
+      <div
+        css={buttonStyle}
+        style={{ background: themeColor }}
+        onClick={() => onClickReset()}
+      >
+        リセット
+      </div>
     </div>
   )
 }
+
+const buttonWrapperStyle = css({
+  borderTop: '1px solid #ccc',
+})
 
 const buttonStyle = css({
   padding: '4px 0',
