@@ -63,7 +63,6 @@ const headerStyle = css({
   justifyContent: 'space-between',
   alignItems: 'center',
   padding: 10,
-  marginBottom: 16,
   img: {
     width: 30,
     height: 30,
