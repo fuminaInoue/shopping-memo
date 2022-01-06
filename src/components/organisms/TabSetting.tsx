@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import React, { useEffect, useState } from 'react'
 import { css } from '@emotion/react'
-import arrow from '../../images/arrow.svg'
+import ok from '../../images/ok.png'
 import minus from '../../images/minus.png'
 
 type Props = {}
@@ -76,7 +76,7 @@ export const TabSetting: React.FC<Props> = ({}) => {
         />
         <img
           css={newTabTitle ? arrowStyle : disabledArrowStyle}
-          src={arrow}
+          src={ok}
           alt="上矢印"
           onClick={newTabTitle ? () => saveTabTitle() : undefined}
         />

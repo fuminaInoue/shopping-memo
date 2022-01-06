@@ -80,6 +80,13 @@ export const Memo: React.FC<Props> = () => {
     else setShowInputField(true)
   }
 
+  const _imageSize = (): number => {
+    if (fontSize === 'small') return 20
+    if (fontSize === 'mideum') return 30
+    if (fontSize === 'large') return 40
+    return 30
+  }
+
   return (
     <div>
       <Tab tabNumber={tabNumber} onCLickTab={onCLickTab} />
@@ -101,7 +108,12 @@ export const Memo: React.FC<Props> = () => {
             />
           )}
           <div css={plusStyle}>
-            <img src={plus} alt="リスト追加" onClick={() => onClickAddList()} />
+            <img
+              style={{ width: _imageSize(), height: _imageSize() }}
+              src={plus}
+              alt="リスト追加"
+              onClick={() => onClickAddList()}
+            />
           </div>
         </div>
       </div>
