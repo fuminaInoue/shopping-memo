@@ -28,7 +28,7 @@ const buttonWrapperStyle = css({
 })
 
 const buttonStyle = css({
-  padding: '8px',
+  padding: '16px',
   width: '90%',
   margin: '0 auto',
   fontWeight: 'bold',

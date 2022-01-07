@@ -90,8 +90,8 @@ const tabSettingStyle = css({
 })
 
 const contentsStyle = css({
-  padding: '8px 0',
-  margin: '0 auto 8px',
+  padding: 16,
+  margin: '0 auto',
   width: '90%',
   display: 'flex',
   justifyContent: 'space-between',

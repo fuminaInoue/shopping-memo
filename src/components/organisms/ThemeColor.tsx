@@ -32,11 +32,12 @@ export const ThemeColor: React.FC<Props> = ({ setThemeColor }) => {
 }
 
 const contentsStyle = css({
-  padding: '8px 0',
+  padding: 16,
   margin: '0 auto',
   width: '90%',
   display: 'flex',
   justifyContent: 'space-between',
+  alignItems: 'center',
 })
 
 const themeStyle = css({
