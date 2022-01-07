@@ -8,7 +8,7 @@ import {
   FontSize,
   ResetButton,
 } from 'components/organisms'
-import close from '../../images/close.svg'
+import close from '../../images/close.png'
 import trash from '../../images/trash.png'
 
 type Props = {}
