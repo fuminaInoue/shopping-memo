@@ -36,10 +36,11 @@ const FontSizeStyle = css({
 })
 
 const contentsStyle = css({
-  padding: '8px 0',
+  padding: 16,
   margin: '0 auto',
   display: 'flex',
   justifyContent: 'space-between',
+  alignItems: 'center',
   width: '90%',
 })
 
