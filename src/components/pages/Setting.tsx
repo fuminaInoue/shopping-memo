@@ -6,10 +6,10 @@ import {
   ThemeColor,
   TabSetting,
   FontSize,
+  MemoResetButton,
   ResetButton,
 } from 'components/organisms'
 import close from '../../images/close.png'
-import trash from '../../images/trash.png'
 
 type Props = {}
 
@@ -26,24 +26,15 @@ export const Setting: React.FC<Props> = () => {
     }
   }, [themeColor])
 
-  const allDelete = () => {
-    const result = window.confirm('全てのメモを削除してよろしいですか？')
-    if (result) {
-      // themeColorやタブの設定は削除しちゃダメ
-      localStorage.removeItem('list')
-      localStorage.removeItem('notChecked')
-    }
-  }
-
   return (
     <div css={settingStyle}>
       <div style={{ background: themeColor }} css={headerStyle}>
-        <img src={trash} alt="全件削除" onClick={() => allDelete()} />
         <img src={close} alt="閉じる" onClick={() => navigate('/')} />
       </div>
       <ThemeColor setThemeColor={setThemeColor} />
       <FontSize />
       <TabSetting />
+      <MemoResetButton />
       <ResetButton />
     </div>
   )
@@ -60,7 +51,7 @@ const settingStyle = css({
 
 const headerStyle = css({
   display: 'flex',
-  justifyContent: 'space-between',
+  justifyContent: 'flex-end',
   alignItems: 'center',
   padding: 10,
   img: {

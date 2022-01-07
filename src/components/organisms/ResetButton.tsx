@@ -1,35 +1,20 @@
 /** @jsxImportSource @emotion/react */
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { css } from '@emotion/react'
 
 type Props = {}
 
 export const ResetButton: React.FC<Props> = ({}) => {
-  const [themeColor, setThemeColor] = useState('')
-
-  useEffect(() => {
-    if (localStorage.getItem('themeColor')) {
-      const theme = localStorage.getItem('themeColor')
-      setThemeColor(theme!)
-    } else {
-      setThemeColor('#afeeee')
-    }
-  }, [])
-
   const onClickReset = () => {
-    const result = window.confirm('リセットしてよろしいですか？')
+    const result = window.confirm('全てのメモと設定を削除してよろしいですか？')
     if (result) localStorage.clear()
     window.location.reload()
   }
 
   return (
     <div css={buttonWrapperStyle}>
-      <div
-        css={buttonStyle}
-        style={{ background: themeColor }}
-        onClick={() => onClickReset()}
-      >
-        リセット
+      <div css={buttonStyle} onClick={() => onClickReset()}>
+        全てのメモと設定を削除する
       </div>
     </div>
   )
@@ -40,12 +25,10 @@ const buttonWrapperStyle = css({
 })
 
 const buttonStyle = css({
-  padding: '4px 0',
-  margin: '40px auto 8px',
-  width: '50%',
-  border: '1px solid #333',
-  borderRadius: 10,
-  textAlign: 'center',
+  padding: '8px',
+  width: '90%',
+  margin: '0 auto',
   fontWeight: 'bold',
   letterSpacing: 1,
+  fontSize: 18,
 })
