@@ -9,6 +9,9 @@ type Props = {}
 export const TabSetting: React.FC<Props> = ({}) => {
   const [newTabTitle, setNewTabTitle] = useState('')
   const [tabTitles, setTabTitles] = useState([''])
+  const list = localStorage.getItem('list')
+    ? JSON.parse(localStorage.getItem('list')!)
+    : []
 
   const saveTabTitle = () => {
     if (validate()) {
@@ -41,6 +44,13 @@ export const TabSetting: React.FC<Props> = ({}) => {
     _tabTitles.splice(i, 1)
     localStorage.setItem('tabTitles', JSON.stringify(_tabTitles))
     setTabTitles(_tabTitles)
+    deleteTabList(i)
+  }
+
+  const deleteTabList = (i: number) => {
+    let _list = [...list]
+    _list.splice(i, 1)
+    localStorage.setItem('list', JSON.stringify(_list))
   }
 
   useEffect(() => {
