@@ -21,8 +21,8 @@ export const List: React.FC<Props> = ({
   onClickCheckBox,
 }) => {
   const _fontSize = (): number => {
-    if (fontSize === 'small') return 16
-    if (fontSize === 'mideum') return 18
+    if (fontSize === 'small') return 18
+    if (fontSize === 'mideum') return 20
     if (fontSize === 'large') return 22
     return 16
   }
