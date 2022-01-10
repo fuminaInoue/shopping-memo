@@ -20,12 +20,14 @@ https://shopping-memo-8251d.web.app
 どのタブにいても全体の「未チェック数」を把握できるよう、タブ名の横にバッジを表示。
 「まだあれを買ってないな」「あと○個タスクが残ってる！」
 など直感的にわかるようにしています。
+
 https://user-images.githubusercontent.com/93621856/148710639-9ef72c28-6819-4a84-b439-b77a2efb6d77.mov
 
 
 ### local Storageを使用
 開発コストを抑えるためにlocal Storageを使用。
 連想配列をJSONで格納することによってデータ管理をスマートにしました。
+
 https://user-images.githubusercontent.com/93621856/148710642-eef679a4-d540-43fc-b3fc-0abed3880bfd.mov
 
 
@@ -33,6 +35,7 @@ https://user-images.githubusercontent.com/93621856/148710642-eef679a4-d540-43fc-
 お買い物用に作成したアプリですが
 様々な用途に対応できるよう、タブ名は自由につけれるように。
 もちろん多数のタブにもスクロールで対応しています。
+
 https://user-images.githubusercontent.com/93621856/148710514-b51ac554-5a4b-49bd-87d2-a2ea5f2248cb.mov
 
 
@@ -40,4 +43,5 @@ https://user-images.githubusercontent.com/93621856/148710514-b51ac554-5a4b-49bd-
 使用する人の好みに合わせて使えるように
 設定画面から文字サイズ、テーマカラーを変更できるようにしました。
 local Storageに保存するためリセットするまでは設定が保持されます。
-https://github.com/fuminaInoue/shopping-memo/issues/51#:~:text=2022%2D01%2D-,10.10.57.58,-.mov
+
+https://user-images.githubusercontent.com/93621856/148710514-b51ac554-5a4b-49bd-87d2-a2ea5f2248cb.mov
