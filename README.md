@@ -40,4 +40,4 @@ https://user-images.githubusercontent.com/93621856/148710514-b51ac554-5a4b-49bd-
 使用する人の好みに合わせて使えるように
 設定画面から文字サイズ、テーマカラーを変更できるようにしました。
 local Storageに保存するためリセットするまでは設定が保持されます。
-https://user-images.githubusercontent.com/93621856/148710631-1a4a8f66-e9a2-462a-8561-1e1b44ca0b10.mov
+https://github.com/fuminaInoue/shopping-memo/issues/51#:~:text=2022%2D01%2D-,10.10.57.58,-.mov
