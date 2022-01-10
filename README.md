@@ -1,46 +1,43 @@
-# Getting Started with Create React App
+# Shopping Memo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 概要
+タブ分けとチェックボックス機能がついたシンプルなメモ。
 
-## Available Scripts
+## URL
+https://shopping-memo-8251d.web.app
 
-In the project directory, you can run:
+## 使用例
+スーパーなどで買い物をするとき、タブ分けを活用することで売り場を行ったり来たりすることが少なくなります。
+また、チェックボックスもついているのでタスク管理などにも便利です。
 
-### `yarn start`
+## 目指した課題解決
+スーパーで買い物をする際にメモアプリを使っていたが、「グルーピングができないので売り場を行ったり来たりすることが多い」という自分の困りごとを解決するために作成しました。
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 工夫した点
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `yarn test`
+### 未チェックのリストの数をバッジで表示
+どのタブにいても全体の「未チェック数」を把握できるよう、タブ名の横にバッジを表示。
+「まだあれを買ってないな」「あと○個タスクが残ってる！」
+など直感的にわかるようにしています。
+https://user-images.githubusercontent.com/93621856/148710639-9ef72c28-6819-4a84-b439-b77a2efb6d77.mov
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+### local Storageを使用
+開発コストを抑えるためにlocal Storageを使用。
+連想配列をJSONで格納することによってデータ管理をスマートにしました。
+https://user-images.githubusercontent.com/93621856/148710642-eef679a4-d540-43fc-b3fc-0abed3880bfd.mov
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 好きな名前でタブを複数作れる
+お買い物用に作成したアプリですが
+様々な用途に対応できるよう、タブ名は自由につけれるように。
+もちろん多数のタブにもスクロールで対応しています。
+https://user-images.githubusercontent.com/93621856/148710514-b51ac554-5a4b-49bd-87d2-a2ea5f2248cb.mov
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 文字サイズとテーマカラーを選択できる
+使用する人の好みに合わせて使えるように
+設定画面から文字サイズ、テーマカラーを変更できるようにしました。
+local Storageに保存するためリセットするまでは設定が保持されます。
+https://user-images.githubusercontent.com/93621856/148710631-1a4a8f66-e9a2-462a-8561-1e1b44ca0b10.mov
