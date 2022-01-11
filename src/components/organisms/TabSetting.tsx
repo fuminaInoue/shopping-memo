@@ -40,6 +40,12 @@ export const TabSetting: React.FC<Props> = ({}) => {
   }
 
   const onClickDelete = (i: number) => {
+    if (
+      !window.confirm(
+        `タブ${i + 1}「${tabTitles[i]}」を削除してもよろしいですか？`,
+      )
+    )
+      return
     let _tabTitles = [...tabTitles]
     _tabTitles.splice(i, 1)
     localStorage.setItem('tabTitles', JSON.stringify(_tabTitles))
