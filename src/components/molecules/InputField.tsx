@@ -6,12 +6,14 @@ type Props = {
   newList: string
   setNewList: React.Dispatch<React.SetStateAction<string>>
   onKeyEnter: (e: React.KeyboardEvent<HTMLInputElement>) => void
+  saveList: () => void
 }
 
 export const InputField: React.FC<Props> = ({
   newList,
   setNewList,
   onKeyEnter,
+  saveList,
 }) => {
   const onChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewList(e.target.value)
@@ -25,6 +27,7 @@ export const InputField: React.FC<Props> = ({
         type="text"
         onChange={(e) => onChangeValue(e)}
         onKeyPress={(e) => onKeyEnter(e)}
+        onBlur={() => saveList()}
         value={newList}
         enterKeyHint="done"
         autoFocus
